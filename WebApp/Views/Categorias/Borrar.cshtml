@@ -1,0 +1,28 @@
+﻿@model Categoria
+
+
+@{
+
+    ViewData["Title"] = "Borrar Categoría";
+
+}
+
+<h3 class="mb-3">¿Está seguro que desa borrar el tipo cuenta @Model.Nombre</h3>
+
+<form asp-action="BorrarCategorias">
+
+    <input type="hidden" asp-for="Idcategoria"/>
+
+    <div class="mb-3">
+        @*label*@
+        <label asp-for="Nombre" class="form-label"></label>
+        @*caja de texto*@
+        <input type="text" asp-for="Nombre" class="form-control" />
+     </div>
+    @*boton*@
+    @*hace push hacia el controlador categorias*@
+     <button type="submit" class="btn btn-primary">Borrar</button>
+     <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+</form>
+
