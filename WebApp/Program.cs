@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IRepositoriosCategorias, RepositoriosCategorias>();
 //configuar el servicio de usuairo
 builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
+//servicio Articulo
+builder.Services.AddTransient<IRepositorioArticulos, RepositorioArticulos>();
 
 var app = builder.Build();
 

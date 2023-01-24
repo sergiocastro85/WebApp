@@ -1,0 +1,51 @@
+﻿@model ArticuloCreacionViewModel
+
+@{
+
+    ViewData["Title"] = "Crear Artículo";
+}
+
+<h1>Crear Artículo</h1>
+
+<form asp-action="Crear">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Idcategoria" class="form-label"></label>
+        <select asp-for="Idcategoria" asp-items="Model.Categorias" class="form-select"></select>
+        <span asp-validation-for="Idcategoria" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Marca" class="form-label"></label>
+        <input asp-for="Marca" class="form-control" />
+        <span asp-validation-for="Marca" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PrecioVenta" class="form-label"></label>
+        <input asp-for="PrecioVenta" class="form-control" />
+        <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Dtmvigencia" class="form-label"></label>
+        <input asp-for="Dtmvigencia" class="form-control" />
+        <span asp-validation-for="Dtmvigencia" class="text-danger"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+</form>

@@ -17,15 +17,6 @@ namespace WebApp.Controllers
         private readonly IRepositoriosCategorias repositoriosCategorias;
         private readonly IServicioUsuarios servicioUsuarios;
 
-        //private readonly string connectionString; 
-
-        ////prueba de conexión
-        //public CategoriasController(IConfiguration configuration) 
-        //{
-
-        //    connectionString = configuration.GetConnectionString("DefaultConnection");
-
-        //} 
 
         //constructor
         public CategoriasController(IRepositoriosCategorias repositoriosCategorias,IServicioUsuarios servicioUsuarios)
@@ -43,15 +34,6 @@ namespace WebApp.Controllers
 
         public IActionResult Crear()
         {
-            //prueba de conexión
-
-            //using (var connection = new SqlConnection(connectionString)) 
-            //{
-            //    //prueba de conexión
-            //    //var query = connection.Query("SELECT 1").FirstOrDefault();
-
-
-            //}
 
             return View();
         }
