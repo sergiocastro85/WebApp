@@ -13,6 +13,8 @@ builder.Services.AddTransient<IRepositoriosCategorias, RepositoriosCategorias>()
 builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
 //servicio Articulo
 builder.Services.AddTransient<IRepositorioArticulos, RepositorioArticulos>();
+//configuara AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

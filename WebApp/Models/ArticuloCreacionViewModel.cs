@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 namespace WebApp.Models
 {
-    public class ArticuloCreacionViewModel:Articulo
+    public class ArticuloCreacionViewModel : Articulo
     {
         public IEnumerable<SelectListItem> Categorias { get; set; }
+
+
     }
 }

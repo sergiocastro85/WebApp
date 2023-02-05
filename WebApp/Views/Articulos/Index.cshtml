@@ -1,0 +1,74 @@
+﻿@model IEnumerable<IndiceArticulosViewModel>
+
+@{
+    ViewData["Title"] = "Articulos";
+
+}
+
+<h1>Articulos</h1>
+
+<a asp-action="Crear" class="btn btn-primary mb-3">Crear nuevo</a>
+
+<div class="accordeon acordeon-articulos">
+    @foreach (var Categoria in Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="cabeceraUno">
+                @{
+                    var id = Categoria.Categoria.Replace(" ", "");
+                    var dataBStarget = "#" + id;
+
+                }
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="@dataBStarget">
+                    <span class="me-3">
+                        <span><strong>@Categoria.Categoria</strong></span>
+
+                    </span>
+
+                </button>
+
+            </h2>
+            <div id="@id" class="accordion-collapse collapse show">
+
+                <div>
+                    <ul class="list-group">
+
+                        @foreach (var articulo in Categoria.Articulos)
+                        {
+                            <li class="list-group-item">
+
+                                <span style="width:50%">
+                                    <strong>@articulo.Nombre</strong>
+                                </span>
+                                <span>
+                                    <a style="background-color:lightsteelblue" asp-action="Editar" 
+                                                                                 asp-route-id="@articulo.Idarticulo" 
+                                                                                 class="btn-light btn">
+                                        @*icono*@
+                                        <i class="bi-pencil-fill"></i>
+                                    </a>
+                                    <a style="background-color:lightslategrey" class="btn-danger btn">
+                                        @*icono*@
+                                        <i class="bi-trash-fill"></i>
+                                    </a>
+
+                                </span>
+
+
+                                <span><strong>$ @articulo.PrecioVenta</strong></span>
+
+                            </li>
+
+                        }
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+
