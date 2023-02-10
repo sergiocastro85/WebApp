@@ -22,7 +22,10 @@
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     data-bs-target="@dataBStarget">
                     <span class="me-3">
-                        <span><strong>@Categoria.Categoria</strong></span>
+                        <span ><strong>@Categoria.Categoria</strong></span>
+                        <span style="width:58%"><strong>Precio Venta</strong></span>
+
+                  
 
                     </span>
 
@@ -37,9 +40,13 @@
                         @foreach (var articulo in Categoria.Articulos)
                         {
                             <li class="list-group-item">
+               
 
-                                <span style="width:50%">
+                                <span style="width:40%">
                                     <strong>@articulo.Nombre</strong>
+                                 </span>
+                                 <span>
+                                <strong style="color:blue">@articulo.PrecioVenta</strong>
                                 </span>
                                 <span>
                                     <a style="background-color:lightsteelblue" asp-action="Editar" 
@@ -48,15 +55,13 @@
                                         @*icono*@
                                         <i class="bi-pencil-fill"></i>
                                     </a>
-                                    <a style="background-color:lightslategrey" class="btn-danger btn">
+                                    <a  style="background-color:lightsteelblue"  asp-action="Borrar" asp-route-id="@articulo.Idarticulo" class="btn-danger btn">
                                         @*icono*@
-                                        <i class="bi-trash-fill"></i>
+                                        <i style="color:black" class="bi-trash-fill"></i>
                                     </a>
 
                                 </span>
 
-
-                                <span><strong>$ @articulo.PrecioVenta</strong></span>
 
                             </li>
 

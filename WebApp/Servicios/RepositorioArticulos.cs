@@ -12,6 +12,7 @@ namespace WebApp.Servicios
     public interface IRepositorioArticulos
     {
         Task Actualizar(ArticuloCreacionViewModel articulo);
+        Task Borrar(int IdArticulo);
         Task<IEnumerable<Articulo>> Buscar();
         Task Crear(Articulo articulo);
         Task<Articulo> ObtenerPorId(int Id);
@@ -77,6 +78,15 @@ namespace WebApp.Servicios
                                                 PrecioVenta = @PrecioVenta,
                                                 dtmVigencia = @Dtmvigencia
                                             WHERE IdArticulo = @IdArticulo;", articulo);
+
+        }
+
+        //metodo para eliminar cuenta
+        public async Task Borrar(int IdArticulo)
+        {
+            using var connection = new SqlConnection(connectionString);
+            await connection.ExecuteAsync(@"DELETE FROM Articulos
+                                            WHERE IdArticulo=@IdArticulo", new { IdArticulo });
 
         }
     }

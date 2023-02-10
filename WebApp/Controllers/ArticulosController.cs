@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -114,6 +115,36 @@ namespace WebApp.Controllers
 
             await repositorioArticulos.Actualizar(articuloEditar);
             return RedirectToAction("Index");
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult>Borrar(int Id)
+        {
+            var articulo = await repositorioArticulos.ObtenerPorId(Id);
+
+            if (articulo is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+            return View(articulo);
+        }
+
+
+        [HttpPost] 
+
+        public async Task<IActionResult> BorrarArticulo(int IdArticulo)
+        {
+
+            var articulo = await repositorioArticulos.ObtenerPorId(IdArticulo);
+
+            if (articulo is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+            await repositorioArticulos.Borrar(IdArticulo);
+
+            return RedirectToAction("Index");   
 
         }
 

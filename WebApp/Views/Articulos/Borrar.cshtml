@@ -1,0 +1,17 @@
+﻿@model Articulo
+
+@{
+
+    ViewData["Title"] = "Borrar Artículo:";
+
+}
+
+<h3 class="mb-3">¿Está seguro que desea borrar el artículo @Model.Nombre?</h3>
+
+<form asp-action="BorrarArticulo">
+
+    <input type="hidden" asp-for="Idarticulo" />
+    <button class="btn btn-danger" type="submit">Borrar</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+</form>
