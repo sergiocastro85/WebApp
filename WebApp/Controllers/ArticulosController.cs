@@ -49,9 +49,9 @@ namespace WebApp.Controllers
 
             modelo.Categorias = categorias.Select(x => new SelectListItem(x.Nombre, x.Idcategoria.ToString()));
 
-       
 
-            return View(modelo);  
+
+            return View(modelo);
         }
 
         [HttpPost] 

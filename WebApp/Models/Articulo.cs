@@ -22,9 +22,11 @@ namespace WebApp.Models
 
         public int PrecioVenta { get; set; }
 
-        
-        [Display(Name ="Fecha de Vigencia")]
-        public DateTime Dtmvigencia { get; set; }
+
+
+        [Display(Name = "Fecha de Vigencia")]
+        [DataType(DataType.Date)]
+        public DateTime Dtmvigencia { get; set; } = DateTime.Now;
 
 
         public string Categoria { get; set; }   
