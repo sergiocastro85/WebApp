@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using WebApp.Models;
 using WebApp.Servicios;
@@ -48,5 +49,69 @@ namespace WebApp.Controllers
 
         
         }
+
+        public async Task<IActionResult> Editar(int Id)
+        {
+            var proveedor = await repositorioProveedor.ObternerPorId(Id);
+
+            if (proveedor is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");   
+            }
+
+            return View(proveedor);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>Editar(Proveedor proveedorEditar)
+        {
+            var proveedor = await repositorioProveedor.ObternerPorId(proveedorEditar.IdProveedor);
+
+            if (!ModelState.IsValid)
+            {
+                return View(proveedorEditar);
+            }
+
+            if (proveedorEditar is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");
+            }
+
+            await repositorioProveedor.Actualizar(proveedorEditar);
+
+            return RedirectToAction("Index");
+   
+
+        }
+
+        public async Task<IActionResult> Borrar(int Id)
+        {
+
+            var proveedor = await repositorioProveedor.ObternerPorId(Id);
+
+            if (proveedor is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            return View(proveedor);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BorrarProveedor(int IdProveedor)
+        {
+
+            var proveedor = await repositorioProveedor.ObternerPorId(IdProveedor);
+
+            if (proveedor is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+
+            }
+            await repositorioProveedor.Borrar(IdProveedor);
+            return RedirectToAction("Index");   
+        }
+
     }
 }

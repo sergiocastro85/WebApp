@@ -29,6 +29,11 @@ namespace WebApp.Models
         public DateTime Dtmvigencia { get; set; } = DateTime.Now;
 
 
-        public string Categoria { get; set; }   
+        public string Categoria { get; set; }
+
+
+        public int Cantidad { get; set; }
+
+        public int PrecioProveedor { get; set; }
     }
 }

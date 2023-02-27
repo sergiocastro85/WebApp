@@ -10,11 +10,13 @@ namespace WebApp.Servicios
 
     public interface IRepositorioProveedor
     {
+        Task Actualizar(Proveedor proveedor);
         Task Borrar(int IdProveedor);
         Task<IEnumerable<Proveedor>> Buscar();
         Task Crear(Proveedor proveedor);
         //Task<Proveedor> ObtenerPorId(int IdProveedor);
         Task<IEnumerable<Proveedor>> ObtenerProveedor();
+        Task<Proveedor> ObternerPorId(int IdProveedor);
     }
     public class RepositorioProveedor:IRepositorioProveedor
     {
@@ -62,19 +64,32 @@ namespace WebApp.Servicios
 
         }
 
-        //public async Task Actualizar(ArticuloCreacionViewModel articulo)
-        //{
-        //    using var connection = new SqlConnection(connectionString);
-        //    await connection.ExecuteAsync(@"UPDATE dbo.Proveedor
-        //                                    SET Identificacion=@Identificacion,
-        //                                     Nombre=@Nombre,
-        //                                     Direccion=@Direccion,
-        //                                     Telefono=@Telefono
-        //                                    WHERE IdProveedor=@IdProveedor;", articulo);
+        public async Task<Proveedor> ObternerPorId(int IdProveedor)
+        {
+            using var connection = new SqlConnection(connectionString);
+            return await connection.QueryFirstOrDefaultAsync<Proveedor>(@"SELECT IdProveedor,
+                                                                           Identificacion,
+                                                                           Nombre,
+                                                                           Direccion,
+                                                                           Telefono
+                                                                    FROM SistemaWeb.dbo.Proveedor
+                                                                    WHERE IdProveedor = @IdProveedor;", new {IdProveedor});
 
-        //}
+        }
 
-        //metodo para eliminar cuenta
+        public async Task Actualizar(Proveedor proveedor)
+        {
+            using var connection = new SqlConnection(connectionString);
+            await connection.ExecuteAsync(@"UPDATE dbo.Proveedor
+                                            SET Identificacion = @Identificacion,
+                                                Nombre = @Nombre,
+                                                Direccion = @Direccion,
+                                                Telefono = @Telefono
+                                            WHERE IdProveedor = @IdProveedor;", proveedor);
+
+        }
+
+
         public async Task Borrar(int IdProveedor)
         {
             using var connection = new SqlConnection(connectionString);

@@ -35,8 +35,8 @@ namespace WebApp.Servicios
         {
 
             using var connection = new SqlConnection(connectionString);
-            var id = await connection.QuerySingleAsync<int>(@"INSERT INTO dbo.Articulos (IdCategoria , Nombre,  Marca, PrecioVenta, dtmVigencia)
-                                                    VALUES (@IdCategoria, @Nombre, @Marca, @PrecioVenta, @dtmVigencia )
+            var id = await connection.QuerySingleAsync<int>(@"INSERT INTO dbo.Articulos (IdCategoria , Nombre,  Marca, PrecioVenta, dtmVigencia,Cantidad,PrecioProveedor)
+                                                    VALUES (@IdCategoria, @Nombre, @Marca, @PrecioVenta, @dtmVigencia,@Cantidad,@PrecioProveedor )
 
                                                     SELECT SCOPE_IDENTITY();", articulo);
             articulo.Idarticulo= id;    
@@ -49,7 +49,7 @@ namespace WebApp.Servicios
             return await connection.QueryAsync<Articulo>(@"SELECT ar.IdArticulo,
                                                                    cg.Nombre AS Categoria,
                                                                    ar.Nombre,
-                                                                   ar.PrecioVenta
+                                                                   ar.PrecioVenta,ar.dtmVigencia,ar.Cantidad,ar.PrecioProveedor
                                                             FROM dbo.Categrias cg
                                                                 INNER JOIN dbo.Articulos ar
                                                                     ON ar.IdCategoria = cg.IdCategoria
@@ -61,7 +61,8 @@ namespace WebApp.Servicios
         {
             using var connection = new SqlConnection(connectionString);
             return await connection.QueryFirstOrDefaultAsync<Articulo>(@"SELECT ar.IdArticulo,
-                                                                        ar.Nombre,ar.Marca,ar.PrecioVenta
+                                                                        ar.Nombre,ar.Marca,ar.PrecioVenta,
+                                                                        ar.dtmVigencia,ar.Cantidad,ar.PrecioProveedor
                                                                         FROM dbo.Categrias cg
                                                                             INNER JOIN dbo.Articulos ar
                                                                                 ON ar.IdCategoria = cg.IdCategoria
@@ -76,7 +77,9 @@ namespace WebApp.Servicios
                                             SET Nombre = @Nombre,
                                                 Marca = @Marca,
                                                 PrecioVenta = @PrecioVenta,
-                                                dtmVigencia = @Dtmvigencia
+                                                dtmVigencia = @Dtmvigencia,
+                                                Cantidad = @Cantidad,
+                                                PrecioProveedor = @PrecioProveedor
                                             WHERE IdArticulo = @IdArticulo;", articulo);
 
         }
