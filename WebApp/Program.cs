@@ -16,7 +16,9 @@ builder.Services.AddTransient<IRepositorioArticulos, RepositorioArticulos>();
 //configuara AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 //Proveedores
-builder.Services.AddTransient<IRepositorioProveedor, RepositorioProveedor>();   
+builder.Services.AddTransient<IRepositorioProveedor, RepositorioProveedor>();
+//DetallesVentas
+builder.Services.AddTransient<IRepositorioDetalleVentas, RepositorioDetallesVentas>();
 
 var app = builder.Build();
 

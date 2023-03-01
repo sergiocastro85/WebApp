@@ -1,0 +1,48 @@
+﻿@model DetalleVentaViewModels
+
+
+@{
+
+    ViewData["Title"] = "Detalle Venta";
+}
+
+<h1>Insertar Detalle Venta</h1>
+
+<form asp-action="Crear">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <select asp-for="IdArticulo" asp-items="Model.Articulos" class="form-select"></select>
+        <span asp-validation-for="IdArticulo" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cantidad" class="form-label"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Precio" class="form-label"></label>
+        <input asp-for="Precio" class="form-control" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DtmFecha" class="form-label"></label>
+        <input asp-for="DtmFecha" class="form-control" />
+        <span asp-validation-for="DtmFecha" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary">Enviar</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+
+
+
+</form>
+
+
+
