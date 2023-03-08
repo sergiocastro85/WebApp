@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.VisualBasic;
+using System;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using WebApp.Models;
@@ -50,16 +52,18 @@ namespace WebApp.Controllers
         
         }
 
-        public async Task<IActionResult> Editar(int Id)
+        public async Task<ActionResult> Editar(int Id)
         {
-            var proveedor = await repositorioProveedor.ObternerPorId(Id);
+            var proveedoreditar = await repositorioProveedor.ObternerPorId(Id);
 
-            if (proveedor is null)
+            if (proveedoreditar is null)
             {
                 return RedirectToAction("NoEncontrado","Home");   
             }
 
-            return View(proveedor);
+     
+            return  View(proveedoreditar);
+           
         }
 
         [HttpPost]

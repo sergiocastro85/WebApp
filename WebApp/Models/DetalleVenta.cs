@@ -7,6 +7,9 @@ namespace WebApp.Models
 {
     public class DetalleVenta
     {
+
+        public int IdDetalleVenta { get; set; }
+
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public int IdArticulo { get; set; }
 
@@ -21,6 +24,12 @@ namespace WebApp.Models
         [DataType(DataType.Date)]
         public DateTime DtmFecha { get; set; }=DateTime.Now;    
 
-        public string Nombre { get; set; }  
+        public string Nombre { get; set; }
+
+
+        public int rTotal { get; set; } 
+
+        
+
     }
 }

@@ -7,7 +7,8 @@ namespace WebApp.Servicios
     {
         public AutoMaperProfiles()
         {
-            CreateMap<Articulo, ArticuloCreacionViewModel>();
+            CreateMap<Articulo, ArticuloCreacionViewModel>().ReverseMap();
+            CreateMap<DetalleVenta,DetalleVentaViewModels>().ReverseMap();
         }   
     }
 }

@@ -78,6 +78,7 @@ namespace WebApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public async Task<IActionResult> Editar(int Id)
         {
             var articulo= await repositorioArticulos.ObtenerPorId(Id); 

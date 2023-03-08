@@ -67,7 +67,7 @@ namespace WebApp.Servicios
                                                                             INNER JOIN dbo.Articulos ar
                                                                                 ON ar.IdCategoria = cg.IdCategoria
                                                                          WHERE ar.IdArticulo=@IdArticulo;", new { IdArticulo });
-            //cg.IdCategoria,
+         
         }
 
         public async Task Actualizar(ArticuloCreacionViewModel articulo)

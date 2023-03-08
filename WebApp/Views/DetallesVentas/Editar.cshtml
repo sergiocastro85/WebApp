@@ -1,17 +1,17 @@
 ﻿@model DetalleVentaViewModels
-
-
 @{
 
-    ViewData["Title"] = "Detalle Venta";
+    ViewData["Title"] = "Editar Detalles Venta";
 }
 
-<h1>Insertar Detalle Venta</h1>
 
-<form asp-action="Crear">
+<form asp-action="Editar">
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    
+
+    <input type="hidden" asp-for="IdDetalleVenta" />
+
+
     <div class="mb-3">
         <label asp-for="Nombre" class="form-label"></label>
         <select asp-for="IdArticulo" asp-items="Model.Articulos" class="form-select"></select>
@@ -30,6 +30,7 @@
         <input asp-for="Precio" class="form-control" />
         <span asp-validation-for="Precio" class="text-danger"></span>
     </div>
+
     <div class="mb-3">
         <label asp-for="rTotal" class="form-label"></label>
         <input asp-for="rTotal" class="form-control" />
@@ -55,33 +56,5 @@
 
 
     <script src="~/js/scriptsCalcularTotal.js" asp-append-version="true"></script>
-    
+
 }
-
-@*<script>
-    // Obtener los elementos de los campos de entrada
-    var Cantidad = document.getElementById('Cantidad');
-    var Precio = document.getElementById('Precio');
-    var rTotal = document.getElementById('rTotal');
-
-    // Función para calcular la suma y actualizar el campo de entrada
-    function calcularSuma() {
-        var result = parseFloat(Cantidad.value) * parseFloat(Precio.value);
-        rTotal.value = isNaN(result) ? '' : result;
-    }
-
-     //Agregar un evento onchange a cada campo de entrada para actualizar la suma
-    Cantidad.addEventListener('change', calcularSuma);
-    Precio.addEventListener('change', calcularSuma);
-</script>
-*@
-
-@*<input type="@Model.Cantidad" id="Cantidad" name="Cantidad" />
-<input type="@Model.Precio" id="Precio" name="Precio" />
-
-<input type="number" id="sum" name="sum" readonly />
-
-
-<input type="number" id="calcularsuma" name="sum" readonly />
-
-*@
