@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StockProductos>
+@{
+    ViewData["Title"] = "Informe Stock de Productos";
+}
+<h1>Inventario de Productos</h1>
+<table class="table">
+    @*cabecera*@
+    <thead>
+        @*fila*@
+        <tr>
+            @*primera celda*@
+            <th>IArticulo</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+
+        </tr>
+    </thead>
+    @*cuerpo*@
+    <tbody>
+
+        @foreach (var stock in Model)
+        {
+            @*fila*@
+            <tr>
+
+                @*Celda*@
+                <td>
+                    @stock.IdArticulo
+                </td>
+                <td>
+                    @stock.Nombre
+                </td>
+                <td>
+                    @stock.Cantidad
+                </td>
+      
+            </tr>
+
+        }
+
+    </tbody>
+</table>

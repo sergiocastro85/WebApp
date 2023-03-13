@@ -16,6 +16,7 @@ namespace WebApp.Servicios
         Task<IEnumerable<Articulo>> Buscar();
         Task Crear(Articulo articulo);
         Task<Articulo> ObtenerPorId(int Id);
+
     }
 
     public class RepositorioArticulos:IRepositorioArticulos
@@ -56,7 +57,7 @@ namespace WebApp.Servicios
                                                             ORDER BY cg.IdCategoria;");
         }
 
-        //metodo que nos va dar la imfarcación de la cuenta a editar
+        
         public async Task<Articulo> ObtenerPorId(int IdArticulo)
         {
             using var connection = new SqlConnection(connectionString);
@@ -92,5 +93,8 @@ namespace WebApp.Servicios
                                             WHERE IdArticulo=@IdArticulo", new { IdArticulo });
 
         }
+
+
+
     }
 }

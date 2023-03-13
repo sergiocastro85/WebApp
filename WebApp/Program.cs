@@ -19,6 +19,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<IRepositorioProveedor, RepositorioProveedor>();
 //DetallesVentas
 builder.Services.AddTransient<IRepositorioDetalleVentas, RepositorioDetallesVentas>();
+//ReporteProveedores
+builder.Services.AddTransient<IRepositorioStock, RepositorioStockProducto>();
 
 var app = builder.Build();
 

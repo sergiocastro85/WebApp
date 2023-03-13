@@ -9,6 +9,7 @@ namespace WebApp.Servicios
         {
             CreateMap<Articulo, ArticuloCreacionViewModel>().ReverseMap();
             CreateMap<DetalleVenta,DetalleVentaViewModels>().ReverseMap();
+     
         }   
     }
 }
