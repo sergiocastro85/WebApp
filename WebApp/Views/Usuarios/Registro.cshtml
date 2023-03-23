@@ -1,0 +1,42 @@
+﻿@model RegistroViewModel
+
+
+@{
+
+    ViewData["Title"] = "Registro de Usuarios";
+}
+
+
+<form asp-action="Registro">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="pasword" class="form-label"></label>
+        <input asp-for="pasword" class="form-control" />
+        <span asp-validation-for="pasword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Tipo">Tipo Usuario</label>
+        <select asp-for="Tipo" class="form-select">
+            <option value="Standar">Standar</option>
+            <option value="Administrador">Admin</option>
+        </select>
+    </div>
+
+
+    <button class="btn-primary btn">Enviar</button>
+    
+</form>
+

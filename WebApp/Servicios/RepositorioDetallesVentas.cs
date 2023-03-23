@@ -13,6 +13,7 @@ namespace WebApp.Servicios
     {
         Task Actualizar(DetalleVenta detalleVenta);
         Task<IEnumerable<DetalleVenta>> Buscar();
+        Task<IEnumerable<ProductoMasVendido>> BuscarProductoMasvendido();
         Task Crear(DetalleVenta detalleVenta);
         Task<DetalleVenta> ObtenerPorId(int IdDetalleVenta);
     }
@@ -77,6 +78,22 @@ namespace WebApp.Servicios
                                                                         FROM dbo.DetalledeVentas dv
                                                                             INNER JOIN dbo.Articulos ar
                                                                                 ON ar.IdArticulo = dv.IdArticulo;");
+        }
+
+        public async Task<IEnumerable<ProductoMasVendido>> BuscarProductoMasvendido()
+        {
+            using var connection= new SqlConnection(connectionString);
+
+            return await connection.QueryAsync<ProductoMasVendido>(@"SELECT dv.IdArticulo,
+                                                                           art.Nombre,
+                                                                           SUM(dv.Cantidad) AS TotalVendido
+                                                                    FROM dbo.DetalledeVentas dv
+                                                                        INNER JOIN dbo.Articulos art
+                                                                            ON art.IdArticulo = dv.IdArticulo
+                                                                    GROUP BY dv.IdArticulo,
+                                                                             art.Nombre
+                                                                    ORDER BY TotalVendido DESC;
+                                                                    ");
         }
 
     }

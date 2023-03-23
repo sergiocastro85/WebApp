@@ -1,0 +1,37 @@
+﻿@model IEnumerable<IndiceVentasViewModel>
+
+<canvas id="ventasChart"></canvas>
+
+
+@section scripts {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            
+        <script>
+            var ctx = document.getElementById('ventasChart').getContext('2d');
+            var ventasChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(Model.Select(v => v.Nombre))),
+                     datasets: [{
+                        label: 'Productos Mas Vendidos',
+                        data: @Html.Raw(Json.Serialize(Model.Select(v => v.TotalVendido))),
+                    backgroundColor: 'rgb(77,173,237)',
+                    borderColor: 'rgb(77,173,237)',
+                    borderWidth:1
+                        
+                    },]
+
+                    
+                      
+            },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+
+                }
+            });
+        </script>
+}
