@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -24,13 +25,18 @@ namespace WebApp.Controllers
             this.signInManager = signInManager;
         }
 
+        //Permitir anonimos
+        [AllowAnonymous]
        public IActionResult Registro()
         {
             return View();  
         }
 
 
+
         [HttpPost]
+        //Permitir anonimos
+        [AllowAnonymous]
         public async Task<IActionResult>Registro(RegistroViewModel modelo)
         {
 
@@ -64,13 +70,16 @@ namespace WebApp.Controllers
 
 
         [HttpGet]
-
+        //Permitir anonimos
+        [AllowAnonymous]
         public IActionResult login()
         {
             return View();
         }
 
         [HttpPost]
+        //Permitir anonimos
+        [AllowAnonymous]
         public async Task<IActionResult> login(LoguinViewModel modelo)
         {
             if (!ModelState.IsValid) 

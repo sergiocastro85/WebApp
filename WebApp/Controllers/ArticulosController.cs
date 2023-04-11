@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,9 @@ using WebApp.Servicios;
 
 namespace WebApp.Controllers
 {
+   
+
+
     public class ArticulosController:Controller
     {
         private readonly IRepositoriosCategorias repositoriosCategorias;
@@ -26,6 +30,10 @@ namespace WebApp.Controllers
             this.repositorioArticulos = repositorioArticulos;
             this.mapper = mapper;
         }
+
+
+        
+
 
         public async Task<IActionResult> Index()
         {
