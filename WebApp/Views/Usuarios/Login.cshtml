@@ -4,6 +4,21 @@
     ViewData["Title"] = "Login";
 }
 
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/animacion.css" />
+   @* <link rel="stylesheet" href="~/css/fondos.css" />*@
+</head>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +27,11 @@
         table {
             
             margin: auto;
-            width:auto%;
-            border-collapse:collapse
+            width:auto;
+            border-collapse:collapse;
+            justify-content:center;
+            align-items:center
+           
         }
 
         td {
