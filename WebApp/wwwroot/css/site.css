@@ -48,3 +48,11 @@ body {
 
 }
 
+#chartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Ajusta la altura según tus necesidades */
+   
+}
+

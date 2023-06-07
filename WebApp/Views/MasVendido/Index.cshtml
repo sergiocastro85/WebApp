@@ -1,37 +1,98 @@
 ﻿@model IEnumerable<IndiceVentasViewModel>
 
+
+@*<h1 style="color:white">PRODUCTOS MAS VENDIDOS</h1>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla centrada</title>
+    <style>
+        table {
+            margin: auto;
+            width: auto;
+            border-collapse: collapse;
+            justify-content: center;
+            align-items: center;
+            margin-top: 250px
+        }
+
+        td {
+            text-align: justify-all;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+</head>
+
+
+
+<div id="chartContainer"></div>
+
 <canvas id="ventasChart"></canvas>
 
 
-@section scripts {
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            
-        <script>
-            var ctx = document.getElementById('ventasChart').getContext('2d');
-            var ventasChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: @Html.Raw(Json.Serialize(Model.Select(v => v.Nombre))),
-                     datasets: [{
-                        label: 'Productos Mas Vendidos',
-                        data: @Html.Raw(Json.Serialize(Model.Select(v => v.TotalVendido))),
-                    backgroundColor: 'rgb(237, 166, 247 )',
-                    borderColor: 'rgb(0,0,0)',
-                    borderWidth:1
-                        
-                    },]
 
-                    
-                      
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('ventasChart').getContext('2d');
+        var ventasChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.Select(v => v.Nombre))),
+                datasets: [{
+                    label: 'Productos Mas Vendidos',
+                    data: @Html.Raw(Json.Serialize(Model.Select(v => v.TotalVendido))),
+                    backgroundColor: 'RGBA(54, 162, 235, 0.5)',
+                    borderColor: '#fff',
+                    borderWidth: 1
+
+                },]
+
+
+
             },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            color:"white",
+                            font: {
+                                family: "Verdana", // Cambia la fuente del eje X a Arial
+                                size: 14 // Cambia el tamaño de fuente del eje X a 12px
+                            }
+                        }
+                    },
+                    y: {
+                        
+                        ticks: {
+                            color: "white",
+                            font: {
+                                family: "Verdana", // Cambia la fuente del eje Y a Verdana
+                                size: 14 // Cambia el tamaño de fuente del eje Y a 14px
+                                
+                            }
                         }
                     }
-
+                },
+                plugins: {
+                    tooltip: {
+                        titleFont: {
+                            size: 20,
+                            weight: 'bold',
+                            family: 'Arial',
+                            color: 'whit'
+                        },
+                        bodyFont: {
+                            size: 16,
+                            weight: 'normal',
+                            family: 'Arial',
+                            color: 'whit'
+                        }
+                    }
                 }
-            });
-        </script>
-}
+            }
+        });
+    </script>
+    }
+
