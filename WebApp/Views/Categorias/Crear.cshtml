@@ -5,12 +5,19 @@
   
 }
 
-<h1>Crear Categoría para Articulos</h1>
-<h5>Subtitulo para algo</h5>
 
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form asp-action="Crear">
+
+
+    <div class="col-md-8 offset-md-2 pt-4">
+        <section id="subtitulos" class="mt-4">
+        <div class="col text-center text-uppercase">
+            <h2>Crear Categoría para Articulos</h2>
+        </div>
+        </section>
+
     <div class="mb-3">
         @*label*@
         <label asp-for="Nombre" class="form-label"></label>
@@ -21,5 +28,5 @@
      @*hace push hacia el controlador categorias*@
      <button type="submit" class="btn btn-primary">Enviar</button>
      <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
-
+    </div>
 </form>

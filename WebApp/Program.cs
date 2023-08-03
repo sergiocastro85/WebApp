@@ -56,6 +56,7 @@ builder.Services.AddAuthentication(options =>
 }).AddCookie(IdentityConstants.ApplicationScheme, opciones =>
 {
     opciones.LoginPath="/usuarios/Login";
+    
 });
 
 

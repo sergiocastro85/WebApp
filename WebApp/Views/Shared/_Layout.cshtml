@@ -9,17 +9,14 @@
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/animacion.css" />
-   @* <link rel="stylesheet" href="~/css/fondos.css" />*@
+    <link rel="stylesheet" href="~/css/Stylos.css" />
+   
 </head>
 <body>
      <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-100 border-bottom box-shadow mb-4" style="background-color:lightskyblue;">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Control de Productos</a>
-@*                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>*@
                 <div class="navbar-collapse collapse d-sm-in line-flex justify-content-between">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
@@ -51,9 +48,15 @@
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item" href="#"  data-bs-toggle="dropdown" >Admin</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="usuarios" asp-action="Registro">Registrar Usuarios</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                    <partial name="_LinksLogin"></partial>
-                </div>
+                    <partial name="_LinksLogin" />
+                 </div>
             </div>
         </nav>
     </header>

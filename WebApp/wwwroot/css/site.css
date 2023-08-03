@@ -43,8 +43,10 @@ body {
 
 .dropdown-item {
 
-    border-left:solid 2px;
-    border-right:solid 2px;
+/*    border-left:solid 2px;
+    border-right:solid 2px;*/
+
+color:black !important
 
 }
 
