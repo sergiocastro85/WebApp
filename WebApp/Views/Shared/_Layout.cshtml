@@ -10,35 +10,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/animacion.css" />
     <link rel="stylesheet" href="~/css/Stylos.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
    
 </head>
 <body>
      <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-opacity-100 border-bottom box-shadow mb-4" style="background-color:lightskyblue;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-opacity-100 border-bottom box-shadow mb-4"  onselect="onfocus" style="background-color:#49B1FE;">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Control de Productos</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:#1B365C; font-size: 19px; font-family:Arial">*Control de Productos*</a>
                 <div class="navbar-collapse collapse d-sm-in line-flex justify-content-between">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs active">
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            @*<a class="nav-link table-active"  asp-controller="Home" asp-action="Index" style="color:#1B365C;font-family:Arial">Home</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "Home")" style="color:#1B365C;font-family:Arial">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-controller="Categorias" asp-action="Index">Categorías</a>
+                            @*<a class="nav-link" id="btn1" asp-controller="Categorias" asp-action="Index" style="color:#1B365C;font-family:Arial">Categorías</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Categorias" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "Categorias")" style="color:#1B365C;font-family:Arial">Categorías</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-controller="Articulos" asp-action="Crear">Crear Artículos</a>
+                            @*<a class="nav-link" id="btn2" asp-controller="Articulos" asp-action="Crear" style="color:#1B365C;font-family:Arial">Crear Artículos</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Articulos" && ViewContext.RouteData.Values["action"].ToString()=="Crear" ? "active" : "")" href="@Url.Action("Crear", "Articulos")" style="color:#1B365C;font-family:Arial">Crear Artículos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-controller="Articulos" asp-action="Index">Lista De Artículos</a>
+                            @*<a class="nav-link" id="btn3" asp-controller="Articulos" asp-action="Index" style="color:#1B365C;font-family:Arial">Lista De Artículos</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Articulos" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "Articulos")" style="color:#1B365C;font-family:Arial">Lista De Artículos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-controller="Proveedor" asp-action="Index">Lista Proveedores</a>
+    @*                        <a class="nav-link" id="btn4" asp-controller="Proveedor" asp-action="Index" style="color:#1B365C;font-family:Arial">Lista Proveedores</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Proveedor" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "Proveedor")" style="color:#1B365C;font-family:Arial">Lista Proveedores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item" asp-controller="DetallesVentas" asp-action="Crear">Ingresar Detalle Venta</a>
+                            @*<a class="nav-link" id="btn5" asp-controller="DetallesVentas" asp-action="Crear" style="color:#1B365C;font-family:Arial">Ingresar Detalle Venta</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "DetallesVentas" && ViewContext.RouteData.Values["action"].ToString()=="Crear" ? "active" : "")" href="@Url.Action("Crear", "DetallesVentas")" style="color:#1B365C;font-family:Arial">Ingresar Detalle Venta</a>
                         </li>
-                        <li class="nav navbar-dark text-black">
-                            <a class="dropdown-item tex" style="font-weight-bold" asp-controller="DetallesVentas" asp-action="Index">Editar Detalle Venta</a>
+                        <li class="nav-item">
+                          @*  <a class="nav-link" id="btn6" asp-controller="DetallesVentas" asp-action="Index" style="color:#1B365C;font-family:Arial">Editar Detalle Venta</a>*@
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "DetallesVentas" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "DetallesVentas")" style="color:#1B365C;font-family:Arial">Editar Detalle Venta</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-item" href="#"  data-bs-toggle="dropdown" >Reportes</a>
@@ -70,6 +79,17 @@
             &copy; 2023 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Manej    ar el clic e      n los enlaces de navegación
+      $(document).ready(function() {      
+        $('.nav-link').on('click', function() {
+          $('.nav-link').removeClass('active'); // Eliminar la clase 'active' de       todos los enlaces de navegación
+          $(this).addClass('active'); // Agregar la clase 'act      ive' al       enla    ce que ha sido clicado
+        });
+      });
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -78,3 +98,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
