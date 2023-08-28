@@ -20,10 +20,10 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:#1B365C; font-size: 19px; font-family:Arial">*Control de Productos*</a>
                 <div class="navbar-collapse collapse d-sm-in line-flex justify-content-between">
-                    <ul class="nav nav-tabs active">
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            @*<a class="nav-link table-active"  asp-controller="Home" asp-action="Index" style="color:#1B365C;font-family:Arial">Home</a>*@
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")" href="@Url.Action("Index", "Home")" style="color:#1B365C;font-family:Arial">Home</a>
+                            @*<a class="nav-link "  asp-controller="Home" asp-action="Index" style="color:#1B365C;font-family:Arial">Home</a>*@
+                            <a class="nav-link  @(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString()=="Index" ? "active" : "")"  href="@Url.Action("Index", "Home")" style="color:#1B365C;font-family:Arial">Home</a>
                         </li>
                         <li class="nav-item">
                             @*<a class="nav-link" id="btn1" asp-controller="Categorias" asp-action="Index" style="color:#1B365C;font-family:Arial">Categorías</a>*@
